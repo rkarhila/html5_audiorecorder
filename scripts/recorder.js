@@ -135,7 +135,7 @@
 	fileToUpload.setAttribute("files", url); */
 	
 	var formData= new FormData(document.getElementById("uploadForm"));
-	formData.append("file", blob);
+	formData.append("fileToUpload", blob);
 
 	var request = new XMLHttpRequest();
 	request.open("POST", "upload.php");
