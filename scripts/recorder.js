@@ -141,6 +141,9 @@
 	request.open("POST", "upload.php");
 	request.send(formData);
 
+	var news = document.getElementById("news");
+	news.innerHTML="Audio file uploaded";
+
 	/*link.href = url;
 	link.download = filename || 'output.wav';*/
 
