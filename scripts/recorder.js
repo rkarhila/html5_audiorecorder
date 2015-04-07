@@ -68,6 +68,14 @@
 	}
 
 	this.record = function(){
+	    /* Modified: Added button name switching */
+	    var news = document.getElementById("news");
+	    news.innerHTML="Recording";
+
+	    var recButton = document.getElementById("record");
+	    recButton.innerHTML = 'Stop<br>and upload';
+
+
 	    recording = true;
 	}
 
@@ -124,12 +132,19 @@
     /* Modified: Added a function to deal with uploads */
 
     Recorder.setupUpload = function(blob, filename){
-	/*var url = (window.URL || window.webkitURL).createObjectURL(blob);*/
+	var url = (window.URL || window.webkitURL).createObjectURL(blob);
 	/*var link = document.getElementById("upload");*/
 
+	var listenButton = document.getElementById("listenButton");
+	listenButton.disabled = false;
 
-	var nextButton = document.getElementById("nextButton");
-	nextButton.disabled = false;
+	document.getElementById('recordedObject').src=url;
+
+
+
+	var news = document.getElementById("news");
+	news.innerHTML="Uploading audio";
+
 
 	/*var fileToUpload =document.getElementById("fileToUpload");
 	fileToUpload.setAttribute("files", url); */
@@ -141,11 +156,20 @@
 	request.open("POST", "upload.php");
 	request.send(formData);
 
-	var news = document.getElementById("news");
+	
 	news.innerHTML="Audio file uploaded";
-
+	
 	/*link.href = url;
 	link.download = filename || 'output.wav';*/
+
+	var nextButton = document.getElementById("nextButton");
+	nextButton.disabled = false;
+
+	var recButton = document.getElementById("record");
+	recButton.innerHTML = 'Re-record<br>audio';
+
+	
+
 
 
     }

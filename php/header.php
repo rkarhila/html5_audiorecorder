@@ -1,25 +1,30 @@
-<!DOCTYPE html>
+<?php
+
+echo '<!DOCTYPE html>
 <html lang="en-us">
 <head>	
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta charset="utf-8">
 	<title>Simple HTML5 audio recorder</title>
 	
-	<script src="scripts/audiodisplay.js"></script>
-	<script src="scripts/recorder.js"></script>
-	<script src="scripts/main.js"></script>
-
 <style>
 	html { overflow: hidden; }
 	body { 
 		font: 14pt Arial, sans-serif; 
 		background: lightgrey;
-		display: flex;
+		/*display: flex;
 		flex-direction: column;
 		height: 100vh;
 		width: 100%;
-		margin: 10px;
+		margin: 10px;*/
 	}
+        #prompt {
+                font: 18pt Arial, sans-serif; 
+		background: pink;
+                padding: 10px;
+                border: 2px dotted;
+		box-shadow: 0px 0px 10px red;
+        }
 	canvas { 
 	        /*display: inline-block; */
 		background: #202020; 
@@ -35,7 +40,7 @@
 		height: 20%;
 		width: 100%;
 	}
-	#record { height: 15vh; }
+	/*#record { height: 15vh; }*/
 	#record.recording { 
 		background: red;
 		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
@@ -60,40 +65,6 @@
 	}
 
 	</style>	
-</head>
-<body>
+</head>'.PHP_EOL;
 
-  <div id="viz">
-    <p> Level meter <br>
-      <canvas id="analyser" width="200" height="100"></canvas> <br>
-      <button id="record" name="Record" onclick="toggleRecording(this);">Record</button>
-    </p>
-
-    <!--<p>Wave preview <br>-->
-      <form action="index.html" method="post" id="uploadForm" enctype="multipart/form-data">
-	<canvas id="wavedisplay" width="200" height="100"></canvas> <br>
-	<!--<a id="save" href="#">Upload</a> -->
-	<!--      <button id="save" name="Upload" onClick="uploadFile(this)">Upload</button> -->
-	
-	<!--<input hidden=hidden type="file" name="fileToUpload" id="fileToUpload">-->
-	<!--<input type="submit" id="uploadSubmit" value="Upload audio" name="submit" disabled>-->
-      <div id="news">
-	<input type="submit" id="nextButton" value="Next task" name="submit" disabled>
-	</form>
-
-    </p>
-  </div>
-
-  <!--
-      <div id="controls">
-    <button id="record" name="Record" onclick="toggleRecording(this);">Record</button><br>
-    <button id="save" href="#">Upload</button>
-  </div>
--->
-
-
-
-
-	
-</body>
-</html>
+?>
