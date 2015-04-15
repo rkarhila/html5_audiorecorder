@@ -144,17 +144,20 @@
 
 	var news = document.getElementById("news");
 	news.innerHTML="Uploading audio";
-
-
+	
+	UploadFile(blob);
+	
 	/*var fileToUpload =document.getElementById("fileToUpload");
 	fileToUpload.setAttribute("files", url); */
-	
+
+
+	/*
 	var formData= new FormData(document.getElementById("uploadForm"));
 	formData.append("fileToUpload", blob);
 
 	var request = new XMLHttpRequest();
 	request.open("POST", "upload.php");
-	request.send(formData);
+	request.send(formData);*/
 
 	
 	news.innerHTML="Audio file uploaded";
@@ -166,7 +169,7 @@
 	nextButton.disabled = false;
 
 	var recButton = document.getElementById("record");
-	recButton.innerHTML = msg_Rerecord; //'Re-record<br>audio';
+	recButton.innerHTML = messages['Rerecord']; //'Re-record<br>audio';
 
 	
 

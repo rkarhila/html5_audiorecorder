@@ -1,11 +1,12 @@
 <?php
 
-echo get_all_javascript_messages();
+get_all_javascript_messages();
 
 echo '
 	<script src="scripts/audiodisplay.js"></script>
 	<script src="scripts/recorder.js"></script>
-	<script src="scripts/main.js"></script>'.PHP_EOL;
+	<script src="scripts/main.js"></script>
+	<script src="scripts/uploadfile.js"></script>'.PHP_EOL;
 
 
 
@@ -36,6 +37,17 @@ echo '<div id="viz">
 
 	<input type="submit" id="nextButton" value="'.get_message('Next task').'" name="submit" disabled>
 	</form>
+
+
+      <form action="upload.php" method="post" id="upload" enctype="multipart/form-data">
+          <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+      </form>
+
+
+<div id="messages"></div>
+
+<div id="progress"></div>
+
 
     </p>
   </div>';
