@@ -166,7 +166,7 @@
 	nextButton.disabled = false;
 
 	var recButton = document.getElementById("record");
-	recButton.innerHTML = 'Re-record<br>audio';
+	recButton.innerHTML = msg_Rerecord; //'Re-record<br>audio';
 
 	
 

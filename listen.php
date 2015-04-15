@@ -22,7 +22,24 @@ $task="Svenska_1";
 $prompt="Varför har jag så stora fötter?";
 
 if (isset($name)) {
-  require('php/recording_html.php');
+
+  $files=scandir('uploads');
+
+  sort($files);
+
+  echo '<table>'.PHP_EOL;
+
+  foreach ($files as $filename) {
+
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if ($ext === "wav") {
+      echo "<tr><td>$filename</td>";
+      echo "<td><audio src=uploads/$filename controls></audio></td></tr>".PHP_EOL;
+    }
+  }
+
+  echo "</table>";
+
 }
 else {
   /* authentication has not been performed */

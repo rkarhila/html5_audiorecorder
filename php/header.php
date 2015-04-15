@@ -1,5 +1,14 @@
 <?php
 
+/*
+
+Some bits nicked from http://webaudiodemos.appspot.com/AudioRecorder/index.html
+
+*/
+
+
+
+
 echo '<!DOCTYPE html>
 <html lang="en-us">
 <head>	
