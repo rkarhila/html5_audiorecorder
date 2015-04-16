@@ -13,11 +13,10 @@
 	m.innerHTML = msg + m.innerHTML;
     }
 */
-    function UploadFile(file) {
-
-	// following line is not necessary: prevents running on SitePoint servers
+    function UploadFile(file, filename) {
 
 	var xhr = new XMLHttpRequest();
+
 	if (xhr.upload && file.size <= $id("MAX_FILE_SIZE").value) {
 
 	    // create progress bar
@@ -28,7 +27,7 @@
 	    var date = new Date();
 	    var n = date.toDateString();
 	    var time = date.toLocaleTimeString();
-	    progress.appendChild(document.createTextNode(time +" upload " + file.name));
+	    progress.appendChild(document.createTextNode("Uploading " + filename));
 	    //progress.insertBefore(document.createTextNode(time +" upload " + file.name), progress.firstChild)
 	    //m.insertBefore(document.createTextNode( time +" upload " + file.name + "\n"), m.firstChild);
 
@@ -42,12 +41,15 @@
 	    xhr.onreadystatechange = function(e) {
 		if (xhr.readyState == 4) {
 		    progress.className = (xhr.status == 200 ? "success" : "failure");
+		    var resp = JSON.parse(xhr.responseText);
+		    progress.innerHTML=resp['msg'];
+		    progress.className = (resp['errorcode'] == "0" ? "success" : "failure");
 		}
 	    };
 
 	    // start upload
 	    xhr.open("POST", $id("upload").action, true);
-	    xhr.setRequestHeader("X_FILENAME", file.name);
+	    xhr.setRequestHeader("X_FILENAME", filename);
 	    xhr.send(file);
 
 	}

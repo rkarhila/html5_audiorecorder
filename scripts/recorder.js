@@ -145,7 +145,7 @@
 	var news = document.getElementById("news");
 	news.innerHTML="Uploading audio";
 	
-	UploadFile(blob);
+	UploadFile(blob, filename);
 	
 	/*var fileToUpload =document.getElementById("fileToUpload");
 	fileToUpload.setAttribute("files", url); */

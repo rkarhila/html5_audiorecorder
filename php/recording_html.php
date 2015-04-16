@@ -41,6 +41,7 @@ echo '<div id="viz">
 
       <form action="upload.php" method="post" id="upload" enctype="multipart/form-data">
           <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+          <input type="hidden" id="filename" name="filename" value="'.$name.'-'.$task.'" />
       </form>
 
 

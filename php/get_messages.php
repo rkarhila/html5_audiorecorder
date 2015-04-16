@@ -17,7 +17,8 @@ function get_message($msg, $lng='en') {
 		   'Record<br>audio' => 'Aloita<br>äänitys',
 		   'Re-record<br>audio' => 'Äänitä<br>uudelleen',
 		   'Level meter' => 'Tasomittari tai mikä lie.',
-		   ' uploaded.' => ' siirretty palvelimelle.');
+		   ' uploaded.' => ' siirretty palvelimelle.',
+		   ' could not be saved.' => '-tiedostoa ei voitu tallentaa');
   
   if (isset($messages[$msg])) {
     return $messages[$msg];

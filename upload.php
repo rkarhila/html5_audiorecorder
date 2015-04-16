@@ -10,14 +10,33 @@ $fn = (isset($_SERVER['HTTP_X_FILENAME']) ? $_SERVER['HTTP_X_FILENAME'] : false)
 
 if ($fn) {
 
-	// AJAX call
-	file_put_contents(
-		'uploads/' . $fn,
-		file_get_contents('php://input')
-	);
-	echo json_encode (Array('errorcode' => 0, 'errortext' => "", 'msg' => $fn.get_message(" uploaded.") ));
-	//echo "$fn uploaded";
-	exit();
+  mkdir('uploads/'.$name);
+
+  if (file_exists('uploads/'.$name.'/' . $fn)) {
+      $errorcode= -1;
+      $errortext= $fn . get_message(" already exists.");
+      $msg=$errortext;
+    }
+  // AJAX call
+  elseif (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
+      $errorcode= -1;
+      $errortext= $fn . get_message(" could not be saved.");
+      $msg=$errortext;
+
+    echo json_encode (Array('errorcode' => -1, 'errortext' => "", 'msg' => $fn . get_message(" could not be saved.") ));
+  }
+  else {
+      $errorcode= 0;
+      $errortext= "";
+      $msg= $fn . get_message(" uploaded.");
+  }
+
+  echo json_encode (Array('errorcode' => $errorcode,
+			  'errortext' => $errortext, 
+			  'msg' => $msg ));
+
+  //echo "$fn uploaded";
+  exit();
 	
 }
 else {
