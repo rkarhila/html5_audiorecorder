@@ -5,11 +5,12 @@ require('php/get_messages.php');
 require('php/auth.php');
 
 
+
 // Differentiate between direct calls and AJAX:
 $fn = (isset($_SERVER['HTTP_X_FILENAME']) ? $_SERVER['HTTP_X_FILENAME'] : false);
 
 if ($fn) {
-  if (!file_exists('uploads/'.$name) {
+  if (!file_exists('uploads/'.$name)) {
       mkdir('uploads/'.$name);
     }
     
@@ -38,9 +39,15 @@ if ($fn) {
     //echo "$fn uploaded";
     exit();
     
-    }
 }
+
 else {
+
+     echo json_encode (Array('errorcode' => 120,
+                            'errortext' => "Josses",
+                            'msg' => serialize($_SERVER) )); //apache_request_headers()) ));
+
+exit();
 
   if (isset($name)) {
 

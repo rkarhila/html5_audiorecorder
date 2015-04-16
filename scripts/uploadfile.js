@@ -52,7 +52,8 @@ function UploadFile(file, filename) {
 	    // start upload
 	    console.log("Opening xhr for "+filename);	    
 	    xhr.open("POST", $id("upload").action, true);
-	    xhr.setRequestHeader("X_FILENAME", filename);
+	    xhr.setRequestHeader("X-FILENAME", filename);
+	    xhr.setRequestHeader("HTTP-X-FILENAME", filename);
 	    xhr.send(file);
 	    console.log("Send command made for "+filename);	    
 	}
