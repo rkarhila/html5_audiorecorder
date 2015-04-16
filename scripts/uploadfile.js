@@ -15,6 +15,7 @@
 */
     function UploadFile(file, filename) {
 
+	console.log("Going into Uploadfile with filename "+filename);
 	var xhr = new XMLHttpRequest();
 
 	if (xhr.upload && file.size <= $id("MAX_FILE_SIZE").value) {
@@ -43,14 +44,17 @@
 		    progress.className = (xhr.status == 200 ? "success" : "failure");
 		    var resp = JSON.parse(xhr.responseText);
 		    progress.innerHTML=resp['msg'];
+		    console.log("Server response for "+filename+": "+resp['msg']);
 		    progress.className = (resp['errorcode'] == "0" ? "success" : "failure");
 		}
 	    };
 
 	    // start upload
+	    console.log("Opening xhr for "+filename);	    
 	    xhr.open("POST", $id("upload").action, true);
 	    xhr.setRequestHeader("X_FILENAME", filename);
 	    xhr.send(file);
+	    console.log("Send command made for "+filename);	    
 
 	}
     }
