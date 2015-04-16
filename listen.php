@@ -23,7 +23,7 @@ $prompt="Varför har jag så stora fötter?";
 
 if (isset($name)) {
 
-  $files=scandir('uploads');
+  $files=scandir('uploads/'.$name);
 
   sort($files);
 
@@ -34,7 +34,7 @@ if (isset($name)) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
     if ($ext === "wav") {
       echo "<tr><td>$filename</td>";
-      echo "<td><audio src=uploads/$filename controls></audio></td></tr>".PHP_EOL;
+      echo "<td><audio src=uploads/$name/$filename controls></audio></td></tr>".PHP_EOL;
     }
   }
 
