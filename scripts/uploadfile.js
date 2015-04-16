@@ -9,17 +9,17 @@
 /*
     // output information
     function Output(msg) {
-	var m = $id("messages");
-	m.innerHTML = msg + m.innerHTML;
+    var m = $id("messages");
+    m.innerHTML = msg + m.innerHTML;
     }
 */
-    function UploadFile(file, filename) {
+function UploadFile(file, filename) {
 
-	console.log("Going into Uploadfile with filename "+filename);
-	var xhr = new XMLHttpRequest();
+    console.log("Going into Uploadfile with filename "+filename);
+    var xhr = new XMLHttpRequest();
 
-	if (xhr.upload && file.size <= $id("MAX_FILE_SIZE").value) {
-
+    if (file.size <= $id("MAX_FILE_SIZE").value) {
+	if (xhr.upload) {
 	    // create progress bar
 	    var o = $id("progress");
 	    //var m = $id("messages");
@@ -55,15 +55,20 @@
 	    xhr.setRequestHeader("X_FILENAME", filename);
 	    xhr.send(file);
 	    console.log("Send command made for "+filename);	    
-
 	}
+	else {
+	    console.log("Error initialising xhr for "+filename);
+	}
+    } else {
+	console.log("File "+filename+" too large (" + file.size + ")");
     }
+}
 /*    
-    // initialize
-    function Init() {
+// initialize
+function Init() {
 
-	var fileselect = $id("fileselect"),
-	filedrag = $id("filedrag"),
+var fileselect = $id("fileselect"),
+filedrag = $id("filedrag"),
 	submitbutton = $id("submitbutton");
 
 	// file select
