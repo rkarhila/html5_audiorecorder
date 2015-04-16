@@ -9,35 +9,36 @@ require('php/auth.php');
 $fn = (isset($_SERVER['HTTP_X_FILENAME']) ? $_SERVER['HTTP_X_FILENAME'] : false);
 
 if ($fn) {
-
-  mkdir('uploads/'.$name);
-
-  if (file_exists('uploads/'.$name.'/' . $fn)) {
+  if (!file_exists('uploads/'.$name) {
+      mkdir('uploads/'.$name);
+    }
+    
+    if (file_exists('uploads/'.$name.'/' . $fn)) {
       $errorcode= -1;
       $errortext= $fn . get_message(" already exists.");
       $msg=$errortext;
     }
-  // AJAX call
-  elseif (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
+    // AJAX call
+    elseif (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
       $errorcode= -1;
       $errortext= $fn . get_message(" could not be saved.");
       $msg=$errortext;
-
-    echo json_encode (Array('errorcode' => -1, 'errortext' => "", 'msg' => $fn . get_message(" could not be saved.") ));
-  }
-  else {
+      
+    }
+    else {
       $errorcode= 0;
       $errortext= "";
       $msg= $fn . get_message(" uploaded.");
-  }
+    }
 
-  echo json_encode (Array('errorcode' => $errorcode,
-			  'errortext' => $errortext, 
-			  'msg' => $msg ));
+    echo json_encode (Array('errorcode' => $errorcode,
+			    'errortext' => $errortext, 
+			    'msg' => $msg ));
 
-  //echo "$fn uploaded";
-  exit();
-	
+    //echo "$fn uploaded";
+    exit();
+    
+    }
 }
 else {
 
@@ -127,4 +128,5 @@ else {
     echo json_encode (Array('errorcode' => -8, 'errortext' => get_message('Not logged in')));
   }
 }
+
 ?>
