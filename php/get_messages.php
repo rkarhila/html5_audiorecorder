@@ -39,7 +39,7 @@ function get_all_javascript_messages() {
  echo '    var messages = new Object()'.PHP_EOL;
  echo '    messages[\'Record\']=\''.get_message('Record<br>audio').'\';'.PHP_EOL;
  echo '    messages[\'Rerecord\']=\''.get_message('Re-record<br>audio').'\';'.PHP_EOL;
- echo '    messages[\'You are doing task \']=\''.get_message('You are doing the task nr ').'\';'.PHP_EOL;
+ echo '    messages[\'You are doing task \']=\''.get_message('You are doing task ').'\';'.PHP_EOL;
  echo '    messages[\'You can log out after...\']=\''.get_message('You can log out after the upload has finished.').'\';'.PHP_EOL;
  echo '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
  echo '    messages[\'Stop<br>and upload\']=\''.get_message('Stop<br>and upload').'\';'.PHP_EOL;
