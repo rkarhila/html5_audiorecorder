@@ -42,12 +42,12 @@ if ($fn) {
 }
 
 else {
-
+/*
      echo json_encode (Array('errorcode' => 120,
                             'errortext' => "Josses",
                             'msg' => serialize($_SERVER) )); //apache_request_headers()) ));
 
-exit();
+exit();*/
 
   if (isset($name)) {
 
