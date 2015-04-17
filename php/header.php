@@ -42,6 +42,12 @@ echo '<!DOCTYPE html>
                 border: 2px dotted;
 		box-shadow: 0px 0px 10px red;
         }
+        #instructions {
+                margin-bottom: 15px;
+        }
+        #doingtask {
+                margin-bottom: 15px;
+        }
 	canvas { 
 	        /*display: inline-block; */
 		background: #202020; 
@@ -59,7 +65,7 @@ echo '<!DOCTYPE html>
 	}
 	/*#record { height: 15vh; }*/
 	#record.recording { 
-		background: red;
+/*		background: red;*/
 		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
 		background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
 		background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 

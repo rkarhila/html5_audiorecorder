@@ -19,9 +19,10 @@ function get_message($msg, $lng='en') {
 		   'Level meter' => 'Tasomittari tai mikä lie.',
 		   ' uploaded.' => ' siirretty palvelimelle.',
 		   ' could not be saved.' => '-tiedostoa ei voitu tallentaa',
-		   'You are doing the task nr ' => 'Tällä hetkellä työn alla tehtävä nr ',
+		   'You are doing task ' => 'Tällä hetkellä työn alla tehtävä ',
 		   'You can log out after the upload has finished.' => 'Voit kirjautua ulos kun tiedostojen siirto palvelimelle on valmistunut.',
-		   'That\'s it! Thanks for your support!' => 'Det var det! Tack ska du ha!');
+		   'That\'s it! Thanks for your support!' => 'Det var det! Tack ska du ha!',
+		   'Press the rec button and say into the microphone:' => 'Paina nauhoitusnappia ja puhu mikrofoniin:');
 
   
   if (isset($messages[$msg])) {
@@ -37,7 +38,7 @@ function get_all_javascript_messages() {
  echo '    var messages = new Object()'.PHP_EOL;
  echo '    messages[\'Record\']=\''.get_message('Record<br>audio').'\';'.PHP_EOL;
  echo '    messages[\'Rerecord\']=\''.get_message('Re-record<br>audio').'\';'.PHP_EOL;
- echo '    messages[\'You are doing the task nr \']=\''.get_message('You are doing the task nr ').'\';'.PHP_EOL;
+ echo '    messages[\'You are doing task \']=\''.get_message('You are doing the task nr ').'\';'.PHP_EOL;
  echo '    messages[\'You can log out after...\']=\''.get_message('You can log out after the upload has finished.').'\';'.PHP_EOL;
  echo '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
  echo '</script>'.PHP_EOL;

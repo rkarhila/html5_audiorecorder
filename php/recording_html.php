@@ -7,9 +7,10 @@
 //
 
 
-$tasks=Array(1 => Array ('name' => "Sv1_varfor_har_j", 'text'=> "Varför har jag så stora fötter?"),
-	     2 => Array ('name' => "Sv2_jag_vill_kop", 'text'=> "Jag vill köpä en Lenovo Thinkpad Yoga 11e 11,6\" Touch/Celeron N2930/4 Gt/500 Gt/Windows 8.1 64-bit"),
-	     3 => Array ('name' => "Sv3_har_vilar_oc", 'text'=> "Här vilar och härifrån tvättas!"));
+$tasks=Array(1 => Array ('name' => "Ts1_Testi", 'text'=> "Nyt minä testaan äänenpainetasoja: Testi testi yksi kaksi kolme. Mistä tietää että esiintymislava on suorassa? Basistilla valuu kuola tasaisesti molemmista suupielistä. Testitekstini loppu häämöttää ja seuraavaksi kuuntelen tämän tekstin tuolla allaolevalla napilla. Jos se kuulostaa oikealta, eikä alle tule punaisia virhetekstejä, niin painan tuota jatka-nappia ja aloitan ruotsin nauhoittamisen."),
+	     2 => Array ('name' => "Sv2_varfor_har_j", 'text'=> "Varför har jag så stora fötter?"),
+	     3 => Array ('name' => "Sv3_jag_vill_kop", 'text'=> "Jag vill köpä en Lenovo Thinkpad Yoga 11e 11,6\" Touch/Celeron N2930/4 Gt/500 Gt/Windows 8.1 64-bit"),
+	     4 => Array ('name' => "Sv4_har_vilar_oc", 'text'=> "Här vilar och härifrån tvättas!"));
 
 
 
@@ -48,13 +49,16 @@ echo '
                if (currenttask > taskcount) {
                   $id("prompt").innerHTML= messages[\'Thats it\'];
                   $id("viz").innerHTML=\'<p>\'+messages[\'You can log out after...\'];
+                  $id("doingtask").innerHTML = "<br>";
+                  $id("instructions").innerHTML = "<br>";
+
                }
                else {
                  $id("prompt").innerHTML=tasks[currenttask];
                  $id("nextButton").disabled=true;
   	         $id("listenButton").disabled = true;
   	         $id("record").innerHTML = messages[\'Record\'];
-                 $id("doingtask").innerHTML=messages[\'You are doing the task nr \']+ currenttask + \'.\';
+                 $id("doingtask").innerHTML=messages[\'You are doing task \']+ currenttask + \'.\';
                }
            }
         </script>'.PHP_EOL;
@@ -63,12 +67,13 @@ echo '
 
 
 echo '<div id="doingtask">'.PHP_EOL;
-echo get_message('You are doing the task nr ').$tasknr.".<br>".PHP_EOL;
+echo get_message('You are doing task ').$tasknr."/".sizeof($tasks).".<br>".PHP_EOL;
 echo '</div>'.PHP_EOL;
 
 
-echo '<br>'.PHP_EOL;
-echo 'Press the rec button and say into the microphone: '.PHP_EOL;
+echo '<div id=instructions>'.PHP_EOL;
+echo get_message('Press the rec button and say into the microphone:').PHP_EOL;
+echo '</div>'.PHP_EOL;
 echo '<div id="prompt">'. $prompt .'</div>'.PHP_EOL;
 
 echo "<audio id='recordedObject'></audio>".PHP_EOL;
