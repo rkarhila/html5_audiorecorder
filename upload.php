@@ -5,40 +5,44 @@ require('php/get_messages.php');
 require('php/auth.php');
 
 
-
 // Differentiate between direct calls and AJAX:
 $fn = (isset($_SERVER['HTTP_X_FILENAME']) ? $_SERVER['HTTP_X_FILENAME'] : false);
 
 if ($fn) {
   if (!file_exists('uploads/'.$name)) {
-      mkdir('uploads/'.$name);
-    }
+    mkdir('uploads/'.$name);
+  }
+  
+  /*if (file_exists('uploads/'.$name.'/' . $fn)) {
+    $errorcode= -1;*/
+  $ct=0;
+  while (file_exists('uploads/'.$name.'/' . basename($fn,'.wav').'-'.$ct.'.wav')) {
+    $ct++;
+  }
+  $fn=basename($fn,'.wav').'-'.$ct.'.wav';
+  
+
     
-    if (file_exists('uploads/'.$name.'/' . $fn)) {
-      $errorcode= -1;
-      $errortext= $fn . get_message(" already exists.");
-      $msg=$errortext;
-    }
     // AJAX call
-    elseif (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
-      $errorcode= -1;
-      $errortext= $fn . get_message(" could not be saved.");
-      $msg=$errortext;
-      
-    }
-    else {
-      $errorcode= 0;
-      $errortext= "";
-      $msg= $fn . get_message(" uploaded.");
-    }
-
-    echo json_encode (Array('errorcode' => $errorcode,
-			    'errortext' => $errortext, 
-			    'msg' => $msg ));
-
-    //echo "$fn uploaded";
-    exit();
+  if (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
+    $errorcode= -1;
+    $errortext= $fn . get_message(" could not be saved.");
+    $msg=$errortext;
     
+  }
+  else {
+    $errorcode= 0;
+    $errortext= "";
+    $msg= $fn . get_message(" uploaded.");
+  }
+  
+  echo json_encode (Array('errorcode' => $errorcode,
+			    'errortext' => $errortext, 
+			  'msg' => $msg ));
+  
+  //echo "$fn uploaded";
+  exit();
+  
 }
 
 else {

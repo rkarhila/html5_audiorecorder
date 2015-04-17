@@ -73,7 +73,7 @@
 	    news.innerHTML="Recording";
 
 	    var recButton = document.getElementById("record");
-	    recButton.innerHTML = 'Stop<br>and upload';
+	    recButton.innerHTML = '<font style="color:red">'+messages['Stop<br>and upload']+'</font>';
 
 
 	    recording = true;
