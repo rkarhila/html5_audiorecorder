@@ -15,13 +15,9 @@ require('php/header.php');
 
 echo '<body>'.PHP_EOL;
 
-echo "<p>$login_message</p>";
-
-// Get tasks etc. 
-$task="Svenska_1";
-$prompt="Varför har jag så stora fötter?";
 
 if (isset($name)) {
+  echo "<div id=loginmessage>$login_message</div>";
   require('php/recording_html.php');
 }
 else {

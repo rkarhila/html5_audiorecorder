@@ -165,8 +165,9 @@
 	/*link.href = url;
 	link.download = filename || 'output.wav';*/
 
-	var nextButton = document.getElementById("nextButton");
-	nextButton.disabled = false;
+	//var nextButton = document.getElementById
+	$id("nextButton").disabled = false;
+	$id("listenButton").disabled = false;
 
 	var recButton = document.getElementById("record");
 	recButton.innerHTML = messages['Rerecord']; //'Re-record<br>audio';

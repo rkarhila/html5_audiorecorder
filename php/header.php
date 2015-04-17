@@ -27,6 +27,14 @@ echo '<!DOCTYPE html>
 		width: 100%;
 		margin: 10px;*/
 	}
+        #loginmessage {
+		font: 12pt Arial, sans-serif; 
+		background: #EEEEEE;
+                padding: 5px 5px   5px 10px;
+                margin: -10px -10px 25px -10px;
+                border: 1px solid;
+                box-shadow: 0px 0px 3px gray;
+        }
         #prompt {
                 font: 18pt Arial, sans-serif; 
 		background: pink;
