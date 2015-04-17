@@ -40,6 +40,7 @@ foreach ($tasks as $task) {
 }
 echo '             var currenttask = '.$tasknr.';'.PHP_EOL;  
 echo '             var taskcount = '.sizeof($tasks).';'.PHP_EOL;
+echo '             var speaker = \''.$name.'\';'.PHP_EOL;
 
 echo '       </script>'.PHP_EOL;
 echo '

@@ -63,12 +63,18 @@ echo '<!DOCTYPE html>
 		height: 20%;
 		width: 100%;
 	}
+/*        button,input {
+                background: red;
+
+        }*/
+
 	/*#record { height: 15vh; }*/
 	#record.recording { 
-/*		background: red;*/
-		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-		background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
-		background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%); 
+		/*background: red;
+		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 65%,lightgrey 100%,#7db9e8 100%); 
+		background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 65%,lightgrey 100%,#7db9e8 100%); 
+		background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 65%,lightgrey 100%,#7db9e8 100%); */
+
 	}
 	#save, #save img { height: 10vh; }
 	#save { opacity: 0.25;}
@@ -173,6 +179,7 @@ pre
 
 #progress p
 {
+        font-size: 0.7em; 
 	display: block;
 	width: 240px;
 	padding: 2px 5px;
@@ -187,9 +194,11 @@ pre
 	background: #0c0 none 0 0 no-repeat;
 }
 
-#progress p.failed
+#progress p.failure
 {
 	background: #c00 none 0 0 no-repeat;
+        color: yellow;
+/*	background: #cc3333 none 0 0 no-repeat;*/
 }
 
 

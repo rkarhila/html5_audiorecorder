@@ -41,11 +41,17 @@ function UploadFile(file, filename) {
 	    // file received/failed
 	    xhr.onreadystatechange = function(e) {
 		if (xhr.readyState == 4) {
-		    progress.className = (xhr.status == 200 ? "success" : "failure");
-		    var resp = JSON.parse(xhr.responseText);
-		    progress.innerHTML=resp['msg'];
-		    console.log("Server response for "+filename+": "+resp['msg']);
-		    progress.className = (resp['errorcode'] == "0" ? "success" : "failure");
+		    //progress.className = (xhr.status == 200 ? "success" : "failure");
+		    if (xhr.status != 200) {
+			progress.className = "failure";
+			progress.innerHTML="Error! Server response: "+xhr.status;
+		    }
+		    else {
+			var resp = JSON.parse(xhr.responseText);
+			progress.innerHTML=resp['msg'];
+			console.log("Server response for "+filename+": "+resp['msg']);
+			progress.className = (resp['errorcode'] == "0" ? "success" : "failure");
+		    }
 		}
 	    };
 
