@@ -69,8 +69,12 @@
 
 	this.record = function(){
 	    /* Modified: Added button name switching */
-	    var news = document.getElementById("news");
-	    news.innerHTML="Recording";
+	    /* var news = document.getElementById("news");
+	    news.innerHTML="Recording";*/
+
+	    timercounter=0;
+	    $id("timer").innerHTML="0";
+	    $id("timercontainer").style.visibility = "visible";
 
 	    var recButton = document.getElementById("record");
 	    recButton.innerHTML = '<font style="color:red">'+messages['Stop<br>and upload']+'</font>';
@@ -80,7 +84,10 @@
 	}
 
 	this.stop = function(){
-	    recording = false;
+	    recording = false;	  
+	    timercounter=181;	    
+	    $id("timercontainer").style.visibility = "hidden";
+	    
 	}
 
 	this.clear = function(){
@@ -142,8 +149,8 @@
 
 
 
-	var news = document.getElementById("news");
-	news.innerHTML="Uploading audio";
+	/*var news = document.getElementById("news");
+	news.innerHTML="Uploading audio";*/
 	
 	UploadFile(blob, filename);
 	
@@ -160,7 +167,7 @@
 	request.send(formData);*/
 
 	
-	news.innerHTML="Audio file uploaded";
+	/*news.innerHTML="Audio file uploaded";*/
 	
 	/*link.href = url;
 	link.download = filename || 'output.wav';*/

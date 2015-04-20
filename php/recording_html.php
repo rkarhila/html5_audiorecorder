@@ -43,6 +43,21 @@ echo '             var taskcount = '.sizeof($tasks).';'.PHP_EOL;
 echo '             var speaker = \''.$name.'\';'.PHP_EOL;
 
 echo '       </script>'.PHP_EOL;
+
+echo '
+       <script type="text/javascript">
+           var timercounter=181;
+           setInterval(function () {
+               $id("timer").innerHTML=++timercounter;
+               if (timercounter==180) {
+                 $id("record").click();
+               }
+           }, 1000);
+       </script>
+'.PHP_EOL;
+
+
+
 echo '
         <script type="text/javascript">   
            function nextTask() {
@@ -59,7 +74,7 @@ echo '
                  $id("nextButton").disabled=true;
   	         $id("listenButton").disabled = true;
   	         $id("record").innerHTML = messages[\'Record\'];
-                 $id("doingtask").innerHTML=messages[\'You are doing task \']+ currenttask + \'.\';
+                 $id("doingtask").innerHTML=messages[\'You are doing task \']+ currenttask + \'/\' + taskcount + \'.\';
                }
            }
         </script>'.PHP_EOL;
@@ -79,29 +94,27 @@ echo '<div id="prompt">'. $prompt .'</div>'.PHP_EOL;
 
 echo "<audio id='recordedObject'></audio>".PHP_EOL;
 
-echo '<div id="viz">
-    <p>'.get_message('Level meter').'<br>
+echo '<div id="viz"><div id="firstblock">
+
       <canvas id="analyser" width="200" height="100"></canvas> <br>
       <button id="record" name="Record" onclick="toggleRecording(this);">'.get_message('Record<br>audio').'</button>
-	<div id="news"></div>
-    </p>
+        <div id=timercontainer>'.get_message('Recording ').'<br><span id=timer>0</span> s (max. 180 s)</div><br>
 
-      <form action="index.php" method="post" id="uploadForm" enctype="multipart/form-data">
-        <input hidden=hidden type="text" name="name" value="'.$name.'">
-        <input hidden=hidden type="text" name="task" value="'.$task.'">
 
-	<canvas id="wavedisplay" width="200" height="100"></canvas> <br>
+</div>
+<div id="secondblock">
 
+	<br><canvas id="wavedisplay" width="200" height="100"></canvas> <br>
 	<input type="button" onClick=\'document.getElementById("recordedObject").play()\' id="listenButton" value="'.get_message('Listen').'" name="listen" disabled>
-
 	<input type="button" id="nextButton" value="'.get_message('Next task').'" name="next" onClick="nextTask();"  disabled>
-	</form>
-
 
       <form action="upload.php" method="post" id="upload" enctype="multipart/form-data">
-          <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="'.(40*16*44100).'" />
-          <input type="hidden" id="filename" name="filename" value="'.$name.'-'.$task.'" />
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="'.(40*16*44100).'" />
+        <input type="hidden" id="filename" name="filename" value="'.$name.'-'.$task.'" />
+        <input hidden=hidden type="text" name="name" value="'.$name.'">
+        <input hidden=hidden type="text" name="task" value="'.$task.'">
       </form>
+
   </div>
 
 <div id="messages"></div>

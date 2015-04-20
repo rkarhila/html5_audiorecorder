@@ -23,7 +23,8 @@ function get_message($msg, $lng='en') {
 		   'You can log out after the upload has finished.' => 'Voit kirjautua ulos kun tiedostojen siirto palvelimelle on valmistunut.',
 		   'That\'s it! Thanks for your support!' => 'Det var det! Tack ska du ha!',
 		   'Press the rec button and say into the microphone:' => 'Paina nauhoitusnappia ja puhu mikrofoniin:',
-		   'Stop<br>and upload' => 'Lopeta ja<br>tallenna');
+		   'Stop<br>and upload' => 'Lopeta ja<br>tallenna',
+		   'Recording ' => 'Nauhoittaa ');
 
   
   if (isset($messages[$msg])) {

@@ -54,6 +54,8 @@ echo '<!DOCTYPE html>
 		width: 200px;
 		height: 100px;
 		box-shadow: 0px 0px 10px blue;
+                margin: 15px 0px 15px 0px; 
+                clear: both;
 	}
 	#controls {
 		display: flex;
@@ -201,6 +203,21 @@ pre
 /*	background: #cc3333 none 0 0 no-repeat;*/
 }
 
+#record {
+    float: left;
+}
+
+/* Timer */
+
+#timercontainer {
+    font-size: 1.0em; 
+    font-weight: bold;
+    color: red;
+    visibility: hidden;    
+    width: 170px;
+    float: left;
+    padding: 0px 00px 0px 10px;
+}
 
 
 	</style>	
