@@ -219,6 +219,25 @@ pre
     padding: 0px 00px 0px 10px;
 }
 
+#main {
+        padding-right: 350px;
+}
+
+
+#help_sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 330px;
+    background: #cceeee;
+    border: 1px dotted #555;
+    padding: 5px 5px 5px 10px;
+    /*margin: -10px -10px 25px -10px;*/
+    /*border: 1px solid;*/
+    box-shadow: 0px 0px 6px gray;   
+}
+
 
 	</style>	
 </head>'.PHP_EOL;

@@ -85,7 +85,7 @@
 
 	this.stop = function(){
 	    recording = false;	  
-	    timercounter=181;	    
+	    timercounter=maxrectime+1;	    
 	    $id("timercontainer").style.visibility = "hidden";
 	    
 	}

@@ -24,7 +24,25 @@ function get_message($msg, $lng='en') {
 		   'That\'s it! Thanks for your support!' => 'Det var det! Tack ska du ha!',
 		   'Press the rec button and say into the microphone:' => 'Paina nauhoitusnappia ja puhu mikrofoniin:',
 		   'Stop<br>and upload' => 'Lopeta ja<br>tallenna',
-		   'Recording ' => 'Nauhoittaa ');
+		   'Recording ' => 'Nauhoittaa ',
+		   "Instructions" => "Ohjeet",
+		   "Hide" => "Piilota",
+		   "Enable microphone:" => "Aktivoi mikrofoni: ",
+		   "Choose the right microphone and share options from the drop-down menus. " => "Valitse pudotusvalikoista oikea mikrofoni ja anna sille lupa. ",
+		   "Say something into the microphone. " => "Puhu jotain mikrofoniin",
+		   "You should get a signal in the monitor: " => "Tasomonitoriin pitäisi tulla signaali: ",
+		   "If you have a straight line, check that your microphone is not muted. " => "Jos näet vain suoran viiva, tarkista että mikrofoni ei ole mykkä (mute). ",
+		   "If you have a black box, refresh page and check the permissions. " => "Jos näet mustan laatikon, koeta aktivoida mikrofoni lataamalla sivu uudestaan. ",
+		   "The microphone levels should be automatically adjusted. " => "Mikrofonin tasot säätyvät automaattisesti. ",
+		   "Green and yellow are acceptable levels. " => "Vihreä ja keltainen ovat sopivia tasoja. ",
+		   "If you do get red levels from microphone: " => "Jos tasomonitori menee punaiselle: ",
+		   "Try moving the microphone a little to the side." => "Koeta siirtää mikrofonia hieman sivuun. ",
+		   "When the mic is good, press the record button. " => "Kun mikrofoni toimii oikein, paina \"äänitä\"-nappia. ",
+		   "Speak out the text. " => "Lue näytetty teksti.",
+		   "Press the record button again to stop recording. " => "Paina äänitysnappia uudestaan lopettaaksesi äänityksen. ",
+		   "You can listen to your utterance. " => "Voit kuunnella äänityksen. ",
+		   'If you\'re satisfied with it, click on next task to continue. ' => "Jos olet siihen tyytyväinen, jatka seuraavaan tehtävään. ");
+
 
   
   if (isset($messages[$msg])) {
@@ -47,3 +65,7 @@ function get_all_javascript_messages() {
  echo '</script>'.PHP_EOL;
 
 }
+
+
+
+?>

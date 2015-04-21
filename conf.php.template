@@ -1,0 +1,12 @@
+<?php
+$conf=Array();
+
+$conf['session_expiration_time'] = 1800; // In seconds
+$conf['database'] = 'sqlite:/path/to/dbfile';
+
+
+/* Recording */
+
+$conf['max_rec_time']=180;
+$conf['max_file_size']=(181*2*44100); // 16 bits -> 2 bytes per sample, + extra for header
+?>

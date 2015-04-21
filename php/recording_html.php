@@ -41,15 +41,15 @@ foreach ($tasks as $task) {
 echo '             var currenttask = '.$tasknr.';'.PHP_EOL;  
 echo '             var taskcount = '.sizeof($tasks).';'.PHP_EOL;
 echo '             var speaker = \''.$name.'\';'.PHP_EOL;
-
+echo '             var maxrectime = '.$conf['max_rec_time'].';'.PHP_EOL;
 echo '       </script>'.PHP_EOL;
 
 echo '
        <script type="text/javascript">
-           var timercounter=181;
+           var timercounter=maxrectime+1;
            setInterval(function () {
                $id("timer").innerHTML=++timercounter;
-               if (timercounter==180) {
+               if (timercounter==maxrectime) {
                  $id("record").click();
                }
            }, 1000);
@@ -82,6 +82,7 @@ echo '
 
 
 
+echo '<div id="main">'.PHP_EOL;
 echo '<div id="doingtask">'.PHP_EOL;
 echo get_message('You are doing task ').$tasknr."/".sizeof($tasks).".<br>".PHP_EOL;
 echo '</div>'.PHP_EOL;
@@ -98,7 +99,7 @@ echo '<div id="viz"><div id="firstblock">
 
       <canvas id="analyser" width="200" height="100"></canvas> <br>
       <button id="record" name="Record" onclick="toggleRecording(this);">'.get_message('Record<br>audio').'</button>
-        <div id=timercontainer>'.get_message('Recording ').'<br><span id=timer>0</span> s (max. 180 s)</div><br>
+        <div id=timercontainer>'.get_message('Recording ').'<br><span id=timer>0</span> s (max.'.$conf['max_rec_time'].' s)</div><br>
 
 
 </div>
@@ -109,7 +110,7 @@ echo '<div id="viz"><div id="firstblock">
 	<input type="button" id="nextButton" value="'.get_message('Next task').'" name="next" onClick="nextTask();"  disabled>
 
       <form action="upload.php" method="post" id="upload" enctype="multipart/form-data">
-        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="'.(40*16*44100).'" />
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="'.$conf['max_file_size'].'" />
         <input type="hidden" id="filename" name="filename" value="'.$name.'-'.$task.'" />
         <input hidden=hidden type="text" name="name" value="'.$name.'">
         <input hidden=hidden type="text" name="task" value="'.$task.'">
@@ -120,6 +121,7 @@ echo '<div id="viz"><div id="firstblock">
 <div id="messages"></div>
 
 <div id="progress"></div>
+</div>
 ';
 
 
