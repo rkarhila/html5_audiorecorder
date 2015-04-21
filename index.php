@@ -28,7 +28,7 @@ echo '<body>'.PHP_EOL;
 
 
 if (isset($name)) {
-  require('php/help_bar.php');
+  /*require('php/help_bar.php');*/
   echo "<div id=loginmessage>$login_message</div>";
   require('php/recording_html.php');
 }
