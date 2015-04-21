@@ -86,9 +86,9 @@ echo '
                if (currenttask > taskcount) {
                   $id("prompt").innerHTML= messages[\'Thats it\'];
                   $id("viz").innerHTML=\'<p>\'+messages[\'You can log out after...\'];
-                  $id("doingtask").innerHTML = "<br>";
-                  $id("instructions").innerHTML = "<br>";
-
+                  $id("doingtask").style.visibility = "hidden";
+                  $id("instructions").style.visibility = "hidden";
+                  window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);
                }
                else {
                  $id("doingtask").style.visibility = "visible";
@@ -99,7 +99,7 @@ echo '
   	         $id("listenButton").disabled = true;
   	         $id("record").innerHTML = messages[\'Record\'];
                  $id("doingtask").innerHTML=messages[\'You are doing task \']+ currenttask + \'/\' + taskcount + \'.\';
-                 window.history.pushState("foo","footitle","'.$_SERVER['REQUEST_URI'].'?t="+currenttask);
+                 window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);
                }
            }
         </script>'.PHP_EOL;
@@ -146,11 +146,11 @@ echo '<div id="viz">
       </form>
 
   </div>
-
+</div>
 <div id="messages"></div>
 
 <div id="progress"></div>
-</div>
+
 ';
 
 
