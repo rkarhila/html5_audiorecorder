@@ -7,22 +7,23 @@
 //
 
 
-$tasks=Array(1 => Array ('name' => "Ts1_Testi", 'text'=> "<p>
-Alla näet tasomonitorin. Kun puhut mikrofoniin, sen pitäisi aaltoilla puheesi mukaan. Sivussa näkyvä palkki ilmoittaa sopivasta äänenpainetasosta.
-<p>
-Jos et näe monitorissa mitään liikettä, on mikrofonissasi ongelma. Annoitko luvan mikrofonin käyttöön? Jos et, voit ladata sivun uudestaan ja tarkistaa, että olet valinnut oikean mikrofonin. Onko mikrofoni päällä? Jos ei, sen voi laittaa päälle järjestelmäsi ääniasetuksista.
-<p>
-Jos monitori näyttää usein punaista, on mikrofonin äänenvoimakkuus liian kovalla. Voit säätää sitä järjestelmäsi ääniasetuksista.
-<p>
-Jos ei ota toimiakseen, niin kai siellä joku opettaja on, jonka voi pyytää avuksi?
-<p>
-Kun mikrofoni toimii, niin paina \"Seuraava tehtävä\"-nappia."),
-	     2 => Array ('name' => "Uploadtest", 'text'=>'Nyt testaan ääninäytteen siirtoa palvelimelle. Kun olen puhunut tarpeeksi, lopetan äänityksen nappia painamalla, jolloin myös nauhoitukseni lähetetään automaattisesti palvelimelle. Jos siitä ei tule virhettä ruudun alareunaan, niin painan tuota jatka-nappia ja aloitan ruotsin nauhoittamisen.'),
+
+$tasks=$conf['tasks'];
+
+/*
+The tasks are defined in this simple form:
+
+$conf['tasks'] = Array(1 => Array ('name' => "filename_for_uploaded_text1", 'text'=> "Text to be read."),
+                       2 => Array ('name' => "filename_for_uploaded_text2", 'text'=> "Another text to be read..."),
+                       ...
+                       ); 
+
+The "name" field is prepended by username and appended by version number - The system allows 
+several recordings of the same task.
+*/
 
 
-	     3 => Array ('name' => "Sv1_varfor_har_j", 'text'=> "Varför har jag så stora fötter?"),
-	     4 => Array ('name' => "Sv2_jag_vill_kop", 'text'=> "Jag vill köpa en Lenovo Thinkpad Yoga 11e 11,6\" Touch/Celeron N2930/4 Gt/500 Gt/Windows 8.1 64-bit"),
-	     5 => Array ('name' => "Sv3_har_vilar_oc", 'text'=> "Här vilar och härifrån tvättas!"));
+
 
 
 if ( isset($_GET['t']) && (int)$_GET['t'] > 0 && (int)$_GET['t'] <= sizeof($tasks) ) {
@@ -94,6 +95,9 @@ echo '
            }'.PHP_EOL;
 
 echo '
+           /* Hash handling like a king!
+              http://www.webdesignerdepot.com/2013/03/how-to-manage-the-back-button-with-javascript/ */
+
            function refreshTask() {
                location.hash = currenttask;       
                if (currenttask > taskcount) {

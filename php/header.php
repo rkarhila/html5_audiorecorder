@@ -36,7 +36,8 @@ echo '<!DOCTYPE html>
                 box-shadow: 0px 0px 3px gray;
         }
         #prompt {
-                font: 18pt Arial, sans-serif; 
+                font: 15pt Georgia; 
+                line-height: 150%;
 		background: pink;
                 padding: 10px;
                 border: 2px dotted;
