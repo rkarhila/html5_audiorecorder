@@ -81,14 +81,35 @@ echo '
 
 echo '
         <script type="text/javascript">   
+           location.hash = \''.$tasknr.'\';'.PHP_EOL;
+
+echo '
            function nextTask() {
                currenttask += 1;
+               refreshTask();
+           }
+           function prevTask() {
+               currenttask -= 1;
+               refreshTask();
+           }'.PHP_EOL;
+
+echo '
+           function refreshTask() {
+               location.hash = currenttask;       
                if (currenttask > taskcount) {
                   $id("prompt").innerHTML= messages[\'Thats it\'];
                   $id("viz").innerHTML=\'<p>\'+messages[\'You can log out after...\'];
                   $id("doingtask").style.visibility = "hidden";
                   $id("instructions").style.visibility = "hidden";
-                  window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);
+                  /*window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);*/
+               }
+               else if  (currenttask == 1) {
+                 $id("doingtask").style.visibility = "hidden";
+                 $id("secondblock").style.visibility = "hidden";
+                 $id("instructions").style.visibility = "hidden";
+                 $id("prompt").innerHTML=tasks[currenttask];
+                 $id("nextButton").disabled=false;
+  	         $id("listenButton").disabled = true;
                }
                else {
                  $id("doingtask").style.visibility = "visible";
@@ -99,9 +120,19 @@ echo '
   	         $id("listenButton").disabled = true;
   	         $id("record").innerHTML = messages[\'Record\'];
                  $id("doingtask").innerHTML=messages[\'You are doing task \']+ currenttask + \'/\' + taskcount + \'.\';
-                 window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);
+                 /*window.history.pushState("foo","footitle","'.strtok($_SERVER['REQUEST_URI'],'?').'?t="+currenttask);*/
                }
-           }
+           }'.PHP_EOL;
+echo '
+           window.onhashchange = function() {       
+              if (location.hash.length > 0) {        
+                   currenttask = parseInt(location.hash.replace(\'#\',\'\'),10);     
+              } else {
+                   currenttask = 1;
+              }
+              refreshTask();
+           }'.PHP_EOL;
+echo '
         </script>'.PHP_EOL;
 
 

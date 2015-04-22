@@ -41,8 +41,10 @@ function get_message($msg, $lng='en') {
 		   "Speak out the text. " => "Lue näytetty teksti.",
 		   "Press the record button again to stop recording. " => "Paina äänitysnappia uudestaan lopettaaksesi äänityksen. ",
 		   "You can listen to your utterance. " => "Voit kuunnella äänityksen. ",
-		   'If you\'re satisfied with it, click on next task to continue. ' => "Jos olet siihen tyytyväinen, jatka seuraavaan tehtävään. ");
-
+		   'If you\'re satisfied with it, click on next task to continue. ' => "Jos olet siihen tyytyväinen, jatka seuraavaan tehtävään. ",
+		   'Attention: Next page will ask you to enable your microphone.' => 'Huomio! Seuraava sivu pyytää sinua aktivoimaan mikrofonin.',
+		   'On Firefox, the permission box looks like this:' => 'Firefox-selaimella luvan pyytäminen näyttää suunnilleen tältä:');
+		   
 
   
   if (isset($messages[$msg])) {
