@@ -13,6 +13,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
 
+
 require('php/get_messages.php');
 
 // auth.php checks password and gives the $name variable
@@ -20,24 +21,37 @@ require('php/auth.php');
 
 
 // Headers ie. styles etc:
-require('php/header.php');
+// require('php/header.php');
 
 
 
-echo '<body>'.PHP_EOL;
+//echo '<body>'.PHP_EOL;
+
+$pageTitle=get_message("Speech corpus collector -- ") . $conf['pagetitle'];
+
 
 
 if (isset($name)) {
   /*require('php/help_bar.php');*/
-  echo "<div id=loginmessage>$login_message</div>";
+  //  echo "<div id=loginmessage>$login_message</div>";
   require('php/recording_html.php');
 }
 else {
+
+
   /* authentication has not been performed */
   /* so let's do it here */
-  require('php/auth_form.php');
+  // require('php/auth_form.php');
 }
 
-require('php/footer.php');
+//require('php/footer.php');
+
+
+
+
+
+
+require('./templates/index.jade.php');
+
 	
 ?>

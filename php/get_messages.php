@@ -2,7 +2,9 @@
 
 function get_message($msg, $lng='en') {
 
-  $messages=Array( 'Successful login' => 'Tervetuloa, ',
+  $messages=Array( 
+		  'Speech corpus collector -- ' => 'Puhekorpuksen kerääjä -- ',
+		  'Successful login' => 'Tervetuloa, ',
 		   'Unsuccessful login' => 'Tunnus ja salasana eivät täsmää.',
 		   'Username' => 'Tunnus',
 		   'Password' => 'Salasana',
@@ -56,15 +58,17 @@ function get_message($msg, $lng='en') {
 
 
 function get_all_javascript_messages() {
- echo PHP_EOL.'<script type="text/javascript">'.PHP_EOL;
- echo '    var messages = new Object()'.PHP_EOL;
- echo '    messages[\'Record\']=\''.get_message('Record<br>audio').'\';'.PHP_EOL;
- echo '    messages[\'Rerecord\']=\''.get_message('Re-record<br>audio').'\';'.PHP_EOL;
- echo '    messages[\'You are doing task \']=\''.get_message('You are doing task ').'\';'.PHP_EOL;
- echo '    messages[\'You can log out after...\']=\''.get_message('You can log out after the upload has finished.').'\';'.PHP_EOL;
- echo '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
- echo '    messages[\'Stop<br>and upload\']=\''.get_message('Stop<br>and upload').'\';'.PHP_EOL;
- echo '</script>'.PHP_EOL;
+  $js_messages= '    <script type="text/javascript">'.PHP_EOL;
+  $js_messages.= '    var messages = new Object()'.PHP_EOL;
+  $js_messages.= '    messages[\'Record\']=\''.get_message('Record<br>audio').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Rerecord\']=\''.get_message('Re-record<br>audio').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'You are doing task \']=\''.get_message('You are doing task ').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'You can log out after...\']=\''.get_message('You can log out after the upload has finished.').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Stop<br>and upload\']=\''.get_message('Stop<br>and upload').'\';'.PHP_EOL;
+  $js_messages.= '</script>'.PHP_EOL;
+
+ return $js_messages;
 
 }
 

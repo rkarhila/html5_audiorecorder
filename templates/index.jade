@@ -1,0 +1,89 @@
+!!! 5
+html(lang="en-us")
+
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=Edge;chrome=1")
+
+  title(dir="ltr")= $pageTitle
+
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+  link(rel="stylesheet", media="screen", href="/css/styles.css")
+
+  body
+  header
+    - if ($login_message)
+      div#loginmessage
+        =$login_message
+
+  - if ($name):
+
+    != $javascript_tasks
+
+    != $javascript_messages
+
+    script(src="scripts/audiodisplay.js")
+    script(src="scripts/recorder.js")
+    script(src="scripts/main.js")
+    script(src="scripts/uploadfile.js")
+    script(src="scripts/timer.js")
+
+    = $javascript_navigation
+
+    script(src="scripts/navigation.js")
+
+    div#main
+      div#doingtask
+        = $doingtaskmessage
+
+      div#instructions
+        = $instructionsmessage
+
+      div#prompt
+        = $prompt 
+
+      = $audio_object   
+
+      div#viz
+
+        div#firstblock
+
+          canvas#analyser
+
+        div#secondblock
+          != $recordbutton
+          
+          div#timercontainer
+            != $timer_element
+            
+          br
+          br
+          
+          canvas#wavedisplay
+
+          br
+          = $listenbutton
+          = $nextbutton
+
+        = $uploadform
+
+      div#messages
+
+      div#progress
+
+
+  - else:
+    h1 Kuka olet?
+    form(name="login", action="/index_jade.php", method="post")
+      p Tunnus: 
+      input(type="text", name="username")
+      p Salasana: 
+      input(type="password", name="password")
+      p
+      input(type="submit", value="login")
+
+  div#content
+  div.inner
+    =$bodyContent
+
+
