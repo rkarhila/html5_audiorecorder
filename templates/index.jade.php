@@ -57,7 +57,7 @@
     </div>
   <?php else: ?>
     <h1>Kuka olet?</h1>
-    <form name="login" action="/index_jade.php" method="post">
+    <form name="login" action="/index.php" method="post">
       <p>Tunnus: </p>
       <input type="text" name="username" />
       <p>Salasana: </p>
