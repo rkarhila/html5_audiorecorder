@@ -26,7 +26,7 @@ $dumper->registerFilter('style', new CSSFilter());
 $parser = new Parser(new Lexer());
 $jade   = new Jade($parser, $dumper);
 
-$template = __DIR__ . '/template.jade';
+$template = __DIR__ . '/templates/index.jade';
 
 // Parse a template (both string & file containers)
 echo $jade->render($template);
