@@ -27,9 +27,20 @@ $parser = new Parser(new Lexer());
 $jade   = new Jade($parser, $dumper);
 
 $template = __DIR__ . '/templates/index.jade';
-
+$template_file =  __DIR__ . '/templates/index.jade.php';
 // Parse a template (both string & file containers)
-echo $jade->render($template);
+
+echo "Parsing $template to  $template_file".PHP_EOL;
+
+file_put_contents ($template_file,  $jade->render($template));
+
+$template = __DIR__ . '/templates/teacher.jade';
+$template_file =  __DIR__ . '/templates/teacher.jade.php';
+
+echo "Parsing $template to  $template_file".PHP_EOL;
+
+file_put_contents ($template_file,  $jade->render($template));
+
 
 
 ?>

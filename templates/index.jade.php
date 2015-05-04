@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
   <title dir="ltr"><?php echo $pageTitle ?></title>
   <meta name="viewport" content="width=device-width" initial-scale="1.0" />
-  <link rel="stylesheet" media="screen" href="/css/styles.css" />
+  <link rel="stylesheet" media="screen" href="css/styles.css" />
   <body></body>
   <header>
     <?php if ($login_message) { ?>
@@ -56,18 +56,21 @@
       <div id="progress"></div>
     </div>
   <?php else: ?>
-    <h1>Kuka olet?</h1>
-    <form name="login" action="/index.php" method="post">
-      <p>Tunnus: </p>
-      <input type="text" name="username" />
-      <p>Salasana: </p>
-      <input type="password" name="password" />
-      <p></p>
-      <input type="submit" value="login" />
-    </form>
+    <div id="logincontainer">
+      <div id="recorderlogin">
+        <h1>Kuka olet?</h1>
+        <form name="login" action="index.php" method="post">
+          <p>Tunnus: </p>
+          <input type="text" name="username" />
+          <p>Salasana: </p>
+          <input type="password" name="password" />
+          <p></p>
+          <input type="submit" value="login" />
+        </form>
+      </div>
+      <div id="teacherlogin">
+        <?php echo $teacherlogin ?>
+      </div>
+    </div>
   <?php endif; ?>
-  <div id="content"></div>
-  <div class="inner">
-    <?php echo $bodyContent ?>
-  </div>
 </html>

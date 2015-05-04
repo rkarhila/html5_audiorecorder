@@ -15,9 +15,13 @@ if (!isset($_SESSION['username'])) {
   
   if (isset($_POST['username'])) {
     if (isset($_POST['password'])) {
-      if (check_password($_POST['username'], $_POST['password'])) {
-	$name=$_POST['username'];
+      $user=check_password($_POST['username'], $_POST['password'],$db);
+      if ($user) {
+	$name=$user['username'];
+	$_SESSION['user']=$user;
 	$_SESSION['username']=$name;
+	$_SESSION['userclass']=$user['class'];
+	
 	$login_message=get_message('Successful login')."<b>".$name."</b>. <a href=logout.php>". get_message('Log out here.')."</a>";
       }
       else {
@@ -27,6 +31,7 @@ if (!isset($_SESSION['username'])) {
   }
 }
 else {
+  $user=$_SESSION['user'];
   $name=$_SESSION['username'];
 
   $login_message=get_message('You\'re logged in as ')."<b>".$name."</b>. <a href=logout.php>". get_message('Log out here.')."</a>";

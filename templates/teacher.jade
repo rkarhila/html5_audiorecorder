@@ -1,0 +1,128 @@
+!!! 5
+html(lang="en-us")
+
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=Edge;chrome=1")
+
+  title(dir="ltr")= $pageTitle
+
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+  link(rel="stylesheet", media="screen", href="css/styles.css")
+
+  body
+  header
+    div#loginmessage
+      =$login_message
+
+  - if ($name):
+    h1 Tämä on ylläpidon käyttöliittymä.
+    p Sinä olet 
+      =$name
+      | ja koulusi on 
+      =$user['school']
+
+
+    -if ($newspeakers)
+      h2 Juuri lisäämäsi puhujat:
+
+      p Kopioi tästä ennenkuin maailma vie oikeat nimet mennessään!
+      
+      table#readerstable
+        th Vuosikurssi
+        th A/B-ruotsi
+        th Tunnus
+        th Salasana
+        th Oikea nimi
+        - foreach ($newspeakers as $student)
+          tr 
+            td.readerstd
+              =$student['yearinschool']
+            td.readerstd
+              =$student['langchoice']
+            td.readerstd
+              =$student['username']
+            td.readerstd
+              =$student['password']
+            td.readerstd
+              =$student['realname']
+
+    h2 Kaikki tämänhetkiset puhujasi:
+
+    table#readerstable
+      th Lisäysaika
+      th Vuosikurssi
+      th A/B-ruotsi
+      th Tunnus
+      th Salasana
+      th Kuuntele
+      - foreach ($students as $student)
+        tr 
+          td.readerstd
+            =$student['timestamp']
+          td.readerstd
+            =$student['yearinschool']
+          td.readerstd
+            =$student['langchoice']
+          td.readerstd
+            =$student['username']
+          td.readerstd
+            =$student['password']
+          td.readerstd
+            =$student['samples']
+
+    h2 Lisää puhujia:
+
+    form(name="newstudents", action="teacher.php", method="post")
+      p Kopioi allaolevaan kenttään oppilaittesi nimet, valitse vuosikurssi ja A/B-ruotsi, niin saat tunnukset heille:
+
+      textarea(name="usernames", cols="80", rows="20")
+
+      br
+
+      | Vuosikurssi:
+
+      table
+        tr
+          td
+            input(type="radio", name="yearinschool", value="1")
+          td 1
+        tr
+          td
+            input(type="radio", name="yearinschool", value="2")
+          td 2
+        tr
+          td
+            input(type="radio", name="yearinschool", value="2")
+          td 3
+
+      | Kielivalinta (A/B):
+
+      table
+        tr
+          td
+            input(type="radio", name="langchoice", value="A")
+          td A
+        tr
+          td
+            input(type="radio", name="langchoice", value="B")
+          td B
+
+
+      br
+      input(type='submit', value="Tee tunnukset")
+
+  - else:
+    h1 Admin interface
+    div#logincontainer
+      div#recorderlogin
+        h1 Kuka olet?
+        form(name="login", action="teacher.php", method="post")
+          p Tunnus: 
+          input(type="text", name="username")
+          p Salasana: 
+          input(type="password", name="password")
+          p
+          input(type="submit", value="login")
+
+
