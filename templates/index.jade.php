@@ -56,18 +56,21 @@
       <div id="progress"></div>
     </div>
   <?php else: ?>
-    <h1>Kuka olet?</h1>
-    <form name="login" action="index.php" method="post">
-      <p>Tunnus: </p>
-      <input type="text" name="username" />
-      <p>Salasana: </p>
-      <input type="password" name="password" />
-      <p></p>
-      <input type="submit" value="login" />
-    </form>
+    <div id="logincontainer">
+      <div id="recorderlogin">
+        <h1>Kuka olet?</h1>
+        <form name="login" action="index.php" method="post">
+          <p>Tunnus: </p>
+          <input type="text" name="username" />
+          <p>Salasana: </p>
+          <input type="password" name="password" />
+          <p></p>
+          <input type="submit" value="login" />
+        </form>
+      </div>
+      <div id="teacherlogin">
+        <?php echo $teacherlogin ?>
+      </div>
+    </div>
   <?php endif; ?>
-  <div id="content"></div>
-  <div class="inner">
-    <?php echo $bodyContent ?>
-  </div>
 </html>

@@ -8,7 +8,7 @@ html(lang="en-us")
 
   meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-  link(rel="stylesheet", media="screen", href="/css/styles.css")
+  link(rel="stylesheet", media="screen", href="css/styles.css")
 
   body
   header
@@ -73,17 +73,17 @@ html(lang="en-us")
 
 
   - else:
-    h1 Kuka olet?
-    form(name="login", action="/index.php", method="post")
-      p Tunnus: 
-      input(type="text", name="username")
-      p Salasana: 
-      input(type="password", name="password")
-      p
-      input(type="submit", value="login")
-
-  div#content
-  div.inner
-    =$bodyContent
+    div#logincontainer
+      div#recorderlogin
+        h1 Kuka olet?
+        form(name="login", action="index.php", method="post")
+          p Tunnus: 
+          input(type="text", name="username")
+          p Salasana: 
+          input(type="password", name="password")
+          p
+          input(type="submit", value="login")
 
 
+      div#teacherlogin
+        = $teacherlogin

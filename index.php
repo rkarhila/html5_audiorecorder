@@ -38,7 +38,7 @@ if (isset($name)) {
 }
 else {
 
-
+  $teacherlogin="<a href=teacher.php>".get_message('Login for teachers')."</a>";
   /* authentication has not been performed */
   /* so let's do it here */
   // require('php/auth_form.php');
