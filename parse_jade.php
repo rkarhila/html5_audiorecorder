@@ -42,5 +42,13 @@ echo "Parsing $template to  $template_file".PHP_EOL;
 file_put_contents ($template_file,  $jade->render($template));
 
 
+$template = __DIR__ . '/templates/logout.jade';
+$template_file =  __DIR__ . '/templates/logout.jade.php';
+
+echo "Parsing $template to  $template_file".PHP_EOL;
+
+file_put_contents ($template_file,  $jade->render($template));
+
+
 
 ?>

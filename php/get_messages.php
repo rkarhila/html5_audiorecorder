@@ -46,8 +46,9 @@ function get_message($msg, $lng='en') {
 		   'If you\'re satisfied with it, click on next task to continue. ' => "Jos olet siihen tyytyväinen, jatka seuraavaan tehtävään. ",
 		   'Attention: Next page will ask you to enable your microphone.' => 'Huomio! Seuraava sivu pyytää sinua aktivoimaan mikrofonin.',
 		  'On Firefox, the permission box looks like this:' => 'Firefox-selaimella luvan pyytäminen näyttää suunnilleen tältä:',
-		   'Login for teachers' => 'Opettajien sisäänkirjautuminen');
-		   
+		  'Login for teachers' => 'Opettajien sisäänkirjautuminen',
+		  'Log out after the upload has finished and fill the feedback form!' => 'Kun tiedostot ovat siirtyneet palvelimelle, <a href=logout.php>kirjaudu ulos</a> ja täytä palautelomake!',
+		   'has been added to the mailing list and will receive a confirmation in the foreseeable future' => 'on lisätty postituslistalle ja saat siitä vahvistuksen joskus lähitulevaisuudessa (mutta eipä hätiköidä).');
 
   
   if (isset($messages[$msg])) {
@@ -64,7 +65,7 @@ function get_all_javascript_messages() {
   $js_messages.= '    messages[\'Record\']=\''.get_message('Record<br>audio').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'Rerecord\']=\''.get_message('Re-record<br>audio').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'You are doing task \']=\''.get_message('You are doing task ').'\';'.PHP_EOL;
-  $js_messages.= '    messages[\'You can log out after...\']=\''.get_message('You can log out after the upload has finished.').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Log out after...\']=\''.get_message('Log out after the upload has finished and fill the feedback form!').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'Stop<br>and upload\']=\''.get_message('Stop<br>and upload').'\';'.PHP_EOL;
   $js_messages.= '</script>'.PHP_EOL;
