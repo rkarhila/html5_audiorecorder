@@ -14,7 +14,7 @@ function refreshTask() {
     location.hash = currenttask;       
     if (currenttask > taskcount) {
         $id("prompt").innerHTML= messages['Thats it'];
-        $id("viz").innerHTML='<p>'+messages['You can log out after...'];
+        $id("viz").innerHTML='<p>'+messages['Log out after...'];
         $id("doingtask").style.visibility = "hidden";
         $id("instructions").style.visibility = "hidden";
     }
