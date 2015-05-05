@@ -39,6 +39,25 @@ function randomstring($random_string_length) {
   return $string;
 }
 
+
+/* From http://www.techaspirant.com/php-code-to-find-duration-of-an-audio-file/ */
+
+
+function getDuration($file) {
+  $fp = fopen($file, 'r');
+  $size_in_bytes = filesize($file);
+  fseek($fp, 20);
+  $rawheader = fread($fp, 16);
+  $header = unpack('vtype/vchannels/Vsamplerate/Vbytespersec/valignment/vbits',
+		   $rawheader);
+  $sec = ceil($size_in_bytes/$header['bytespersec']);
+  return $sec;
+  
+}
+
+
+
+
 if (isset($name) && $_SESSION['userclass'] == 'admin') {
 
   if (isset($_POST['usernames'])) {
@@ -104,7 +123,24 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
     //print "<pre>";
     //print_r($arr);
     //print "</pre>";
+    $speaker=$arr['username'];
+
+    $targetdir = "uploads/$speaker/";
+    
+    $audiofiles=[];
+
+    foreach (glob("$targetdir/*.wav") as $audiofile) {
+      $audioname=str_replace("$targetdir/$speaker-","", $audiofile);
+      $audiolength=getDuration($audiofile);
+
+      $link="<audio src=\"$audiofile\" controls></audio>";
+      array_push($audiofiles,Array('name'=>$audioname,'length'=>$audiolength, 'link'=>$link));
+    }
+    $arr['samples']=$audiofiles;
     array_push($students, $arr);
+    print "<pre>";
+    print_r($arr);
+    print "</pre>";
 
   }
 

@@ -75,7 +75,11 @@
             <?php echo $student['password'] ?>
           </td>
           <td class="readerstd">
-            <?php echo $student['samples'] ?>
+            <?php foreach ($student['samples'] as $audio) { ?>
+              <?php echo $audio['link'] ?>
+              <?php echo $audio['name'] ?>
+              <br />
+            <?php } ?>
           </td>
         </tr>
       <?php } ?>
