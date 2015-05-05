@@ -69,7 +69,12 @@ html(lang="en-us")
           td.readerstd
             =$student['password']
           td.readerstd
-            =$student['samples']
+            - foreach ($student['samples'] as $audio)
+              =$audio['link']
+              =$audio['name']
+              br
+
+
 
     h2 Lisää puhujia:
 
