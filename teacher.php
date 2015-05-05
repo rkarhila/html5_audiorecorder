@@ -138,9 +138,6 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
     }
     $arr['samples']=$audiofiles;
     array_push($students, $arr);
-    print "<pre>";
-    print_r($arr);
-    print "</pre>";
 
   }
 
