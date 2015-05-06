@@ -10,12 +10,15 @@ $value=SQLITE3::escapeString($_GET['eval']);
 
 $sqlcheck="select count(*) from speakers where teacher='$name' and username='$speaker'";
 
-echo $sqlcheck;
 
 if ( $db->querySingle($sqlcheck) == 1 ) {
   $sqlcommand="update speakers set evaluation='$value' where username='$speaker';";
-  $db->exec($sqlcommand);
+  $success = $db->exec($sqlcommand);
+  if ($success) 
+    echo "ok!";
+  else
+    echo "Not good.";
 }
-
+echo "Houston, we have an id problem...";
 
 ?>
