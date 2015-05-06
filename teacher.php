@@ -114,6 +114,10 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
   //  echo "<div id=loginmessage>$login_message</div>";
 
   $teacher=$_SESSION['user']['username'];      
+
+
+  $eval_update_url = "<input type=hidden id='evalurl' value='".$conf['evaluation_url']."'>";
+
   $sqlcommand = "SELECT * FROM speakers WHERE teacher='$teacher'";
   
   $queryres=$db->query($sqlcommand);
@@ -137,6 +141,31 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
       array_push($audiofiles,Array('name'=>$audioname,'length'=>$audiolength, 'link'=>$link));
     }
     $arr['samples']=$audiofiles;
+
+
+
+    $evaluationform="<select name='evaluation' id='eval_$speaker' onChange='updateEval(\"$speaker\");'>".PHP_EOL;
+    
+
+
+    if ($arr['evaluation'])
+      $default="";
+    else
+      $default="selected";
+
+    $evaluationform.="<option $default>Valitse</option>".PHP_EOL;
+
+    foreach([4,5,6,7,8,9,10] as $grade) {
+      if ($arr['evaluation'] == $grade) {
+	$default="selected";
+      }
+      else $default="";
+      
+      $evaluationform.="<option $default>$grade</option>".PHP_EOL;
+    }
+    $evaluationform.='</select>';
+
+    $arr['evaluationform']=$evaluationform;
     array_push($students, $arr);
 
   }

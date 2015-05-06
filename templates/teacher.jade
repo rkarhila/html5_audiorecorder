@@ -10,6 +10,8 @@ html(lang="en-us")
 
   link(rel="stylesheet", media="screen", href="css/styles.css")
 
+  script(src="scripts/updateEval.js")
+
   body
   header
     div#loginmessage
@@ -48,7 +50,7 @@ html(lang="en-us")
               =$student['realname']
 
     h2 Kaikki tämänhetkiset puhujasi:
-
+    =$eval_update_url
     table#readerstable
       th Lisäysaika
       th Vuosikurssi
@@ -56,6 +58,8 @@ html(lang="en-us")
       th Tunnus
       th Salasana
       th Kuuntele
+      th Arvioi
+
       - foreach ($students as $student)
         tr 
           td.readerstd
@@ -73,6 +77,8 @@ html(lang="en-us")
               =$audio['link']
               =$audio['name']
               br
+          td.readerstd
+            =$student['evaluationform']
 
 
 

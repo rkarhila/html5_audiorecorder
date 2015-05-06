@@ -5,6 +5,7 @@
   <title dir="ltr"><?php echo $pageTitle ?></title>
   <meta name="viewport" content="width=device-width" initial-scale="1.0" />
   <link rel="stylesheet" media="screen" href="css/styles.css" />
+  <script src="scripts/updateEval.js"></script>
   <body></body>
   <header>
     <div id="loginmessage">
@@ -50,6 +51,7 @@
       </table>
     <?php } ?>
     <h2>Kaikki tämänhetkiset puhujasi:</h2>
+    <?php echo $eval_update_url ?>
     <table id="readerstable">
       <th>Lisäysaika</th>
       <th>Vuosikurssi</th>
@@ -57,6 +59,7 @@
       <th>Tunnus</th>
       <th>Salasana</th>
       <th>Kuuntele</th>
+      <th>Arvioi</th>
       <?php foreach ($students as $student) { ?>
         <tr>
           <td class="readerstd">
@@ -80,6 +83,9 @@
               <?php echo $audio['name'] ?>
               <br />
             <?php } ?>
+          </td>
+          <td class="readerstd">
+            <?php echo $student['evaluationform'] ?>
           </td>
         </tr>
       <?php } ?>
