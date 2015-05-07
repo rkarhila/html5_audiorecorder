@@ -15,6 +15,7 @@ function get_message($msg, $lng='en') {
 		   'You\'ve been logged out.' => 'Olet kirjautunut ulos',
 		   'Start from beginning.' => "Aloita alusta.",
 		   'Listen' => 'Kuuntele',
+		   'Stop' => 'Pysäytä',
 		   'Next task' => 'Seuraava tehtävä',
 		   'Record<br>audio' => 'Aloita<br>äänitys',
 		   'Re-record<br>audio' => 'Äänitä<br>uudelleen',
@@ -68,6 +69,9 @@ function get_all_javascript_messages() {
   $js_messages.= '    messages[\'Log out after...\']=\''.get_message('Log out after the upload has finished and fill the feedback form!').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'Thats it\']=\''.get_message('That\'s it! Thanks for your support!').'\';'.PHP_EOL;
   $js_messages.= '    messages[\'Stop<br>and upload\']=\''.get_message('Stop<br>and upload').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Listen\']=\''.get_message('Listen').'\';'.PHP_EOL;
+  $js_messages.= '    messages[\'Stop\']=\''.get_message('Stop').'\';'.PHP_EOL;
+
   $js_messages.= '</script>'.PHP_EOL;
 
  return $js_messages;

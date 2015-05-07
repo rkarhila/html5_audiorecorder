@@ -78,7 +78,7 @@ $recordbutton='<button id="record" name="Record" onclick="toggleRecording(this);
 
 $timer_element=get_message('Recording ').'<br><span id=timer>0</span> s (max.'.$conf['max_rec_time'].' s)';
 
-$listenbutton='<input type="button" onClick=\'document.getElementById("recordedObject").play()\' id="listenButton" value="'.get_message('Listen').'" name="listen" disabled>';
+$listenbutton='<input type="button" onClick=\'toggle_play();\' oncanplay\'canaudioplay=1\' id="listenButton" value="'.get_message('Listen').'" name="listen" disabled>';
 
 $nextbutton='<input type="button" id="nextButton" value="'.get_message('Next task').'" name="next" onClick="nextTask();" '.$disablenext.' style="visibility: visible;">';
 

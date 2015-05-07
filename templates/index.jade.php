@@ -21,6 +21,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/uploadfile.js"></script>
     <script src="scripts/timer.js"></script>
+    <script src="scripts/play_sample.js"></script>
     <?php echo $javascript_navigation ?>
     <script src="scripts/navigation.js"></script>
     <div id="main">

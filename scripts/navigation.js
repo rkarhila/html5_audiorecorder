@@ -10,13 +10,17 @@ function prevTask() {
     refreshTask();
 }
 
+var canaudioplay = 0;
+
 function refreshTask() {
+
     location.hash = currenttask;       
     if (currenttask > taskcount) {
         $id("prompt").innerHTML= messages['Thats it'];
         $id("viz").innerHTML='<p>'+messages['Log out after...'];
         $id("doingtask").style.visibility = "hidden";
         $id("instructions").style.visibility = "hidden";
+
     }
     else if  (currenttask == 1) {
         $id("doingtask").style.visibility = "hidden";
@@ -35,7 +39,19 @@ function refreshTask() {
   	$id("listenButton").disabled = true;
   	$id("record").innerHTML = messages['Record'];
         $id("doingtask").innerHTML=messages['You are doing task ']+ currenttask + '/' + taskcount + '.';
+
     }
+
+    if ($id("recordedObject"))  {
+	$id("recordedObject").pause();
+	if (canaudioplay == 1) {
+	    $id("recordedObject").currentTime = 0;
+	}
+	$id("listenButton").value=messages['Listen'];	    
+
+    }
+
+
 }
 window.onhashchange = function() {       
     if (location.hash.length > 0) {        
