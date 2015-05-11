@@ -20,6 +20,12 @@ html(lang="en-us")
 
     != $javascript_tasks
 
+    div#sliders
+      img(src=images/fontsize.png)
+      != $fontsize_slider
+      img(src=images/rowsize.png)
+      != $rowheight_slider
+
     != $javascript_messages
 
     script(src="scripts/audiodisplay.js")

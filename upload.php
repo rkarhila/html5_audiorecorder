@@ -4,19 +4,21 @@ session_start();
 require('php/get_messages.php');
 require('php/auth.php');
 
+require('conf.php');
 
 // Differentiate between direct calls and AJAX:
 $fn = (isset($_SERVER['HTTP_X_FILENAME']) ? $_SERVER['HTTP_X_FILENAME'] : false);
 
 if ($fn) {
-  if (!file_exists('uploads/'.$name)) {
-    mkdir('uploads/'.$name);
+  if (!file_exists($conf['audiofilepath'].'/'.$name)) {
+    mkdir($conf['audiofilepath'].'/'.$name);
+    mkdir('uploads'.'/'.$name);
   }
   
   /*if (file_exists('uploads/'.$name.'/' . $fn)) {
     $errorcode= -1;*/
   $ct=0;
-  while (file_exists('uploads/'.$name.'/' . basename($fn,'.wav').'-'.$ct.'.wav')) {
+  while (file_exists($conf['audiofilepath'].'/'.$name.'/' . basename($fn,'.wav').'-'.$ct.'.wav')) {
     $ct++;
   }
   $fn=basename($fn,'.wav').'-'.$ct.'.wav';
@@ -24,7 +26,7 @@ if ($fn) {
 
     
     // AJAX call
-  if (file_put_contents('uploads/' . $name . '/' . $fn, file_get_contents('php://input')) === false) {
+  if (file_put_contents($conf['audiofilepath'].'/'. $name . '/' . $fn, file_get_contents('php://input')) === false) {
     $errorcode= -1;
     $errortext= $fn . get_message(" could not be saved.");
     $msg=$errortext;
@@ -33,7 +35,18 @@ if ($fn) {
   else {
     $errorcode= 0;
     $errortext= "";
-    $msg= $fn . get_message(" uploaded.");
+    $msg= $fn . get_message(" uploaded");
+    
+    $output=system('sox '.$conf['audiofilepath'].'/'. $name . '/' . $fn .' uploads'.'/'.$name .'/'.basename($fn,'.wav').'.mp3', $error );
+
+    file_put_contents('php://stderr', print_r(  $output , TRUE));
+
+    if ($error == 0) {
+      $msg .= get_message(" and encoded");
+    }
+    else {
+      $msg .= "Mutta enkoodaus kaatui ongelmaan: ".'sox '.$conf['audiofilepath'].'/'. $name . '/' . $fn .' uploads'.'/'.$name .'/'.basename($fn,'.wav').'.mp3';
+    }
   }
   
   echo json_encode (Array('errorcode' => $errorcode,

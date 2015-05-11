@@ -15,6 +15,12 @@
   </header>
   <?php if ($name): ?>
     <?php echo $javascript_tasks ?>
+    <div id="sliders">
+      <img src="images/fontsize.png" />
+      <?php echo $fontsize_slider ?>
+      <img src="images/rowsize.png" />
+      <?php echo $rowheight_slider ?>
+    </div>
     <?php echo $javascript_messages ?>
     <script src="scripts/audiodisplay.js"></script>
     <script src="scripts/recorder.js"></script>

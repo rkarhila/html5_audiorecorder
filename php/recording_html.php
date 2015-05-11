@@ -49,11 +49,13 @@ $javascript_messages = get_all_javascript_messages();
 $javascript_tasks='
         <script type="text/javascript">
              var tasks = new Object();
-             var tasknames = new Object();'.PHP_EOL;
+             var tasknames = new Object();
+             var instructions = new Object();'.PHP_EOL;
 $ct=1;
 foreach ($tasks as $task) {
   $javascript_tasks.= "             tasks[$ct] = '".str_replace ( "\n" , "\\\n" , $task['text'])."';".PHP_EOL;
   $javascript_tasks.= "             tasknames[$ct] = '".$task['name']."';".PHP_EOL;
+  $javascript_tasks.= "             instructions[$ct] = '".$task['instructions']."';".PHP_EOL;
   $ct++;
 }
 $javascript_tasks.= '             var currenttask = '.$tasknr.';'.PHP_EOL;  
@@ -89,6 +91,11 @@ $uploadform='
         <input hidden=hidden type="text" name="name" value="'.$name.'">
         <input hidden=hidden type="text" name="task" value="'.$taskname.'">
       </form>';
+
+
+$fontsize_slider='<input id="fontslide" type="range" min="10" max="24" value="20" step="2" oninput=\'$id("prompt").style.fontSize=$id("fontslide").value+"px";\'/>';
+
+$rowheight_slider='<input id="rowslide" type="range" min="1" max="2" value="1.5" step="0.25" oninput=\'$id("prompt").style.lineHeight=$id("rowslide").value+"em";\'/>';
 
 
 ?>

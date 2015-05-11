@@ -18,7 +18,7 @@ function refreshTask() {
     if (currenttask > taskcount) {
         $id("prompt").innerHTML= messages['Thats it'];
         $id("viz").innerHTML='<p>'+messages['Log out after...'];
-        $id("doingtask").style.visibility = "hidden";
+        $id("doingtask").style.visibility = "hidden";	
         $id("instructions").style.visibility = "hidden";
 
     }
@@ -27,6 +27,7 @@ function refreshTask() {
         $id("secondblock").style.visibility = "hidden";
         $id("instructions").style.visibility = "hidden";
         $id("prompt").innerHTML=tasks[currenttask];
+	$id("instructions").innerHTML=instructions[currenttask];
         $id("nextButton").disabled=false;
   	$id("listenButton").disabled = true;
     }
@@ -34,6 +35,7 @@ function refreshTask() {
         $id("doingtask").style.visibility = "visible";
         $id("secondblock").style.visibility = "visible";
         $id("instructions").style.visibility = "visible";
+	$id("instructions").innerHTML=instructions[currenttask];
         $id("prompt").innerHTML=tasks[currenttask];
         $id("nextButton").disabled=true;
   	$id("listenButton").disabled = true;
