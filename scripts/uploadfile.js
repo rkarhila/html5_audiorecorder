@@ -42,15 +42,21 @@ function UploadFile(file, filename) {
 	    xhr.onreadystatechange = function(e) {
 		if (xhr.readyState == 4) {
 		    //progress.className = (xhr.status == 200 ? "success" : "failure");
+		    var err=0;
 		    if (xhr.status != 200) {
 			progress.className = "failure";
 			progress.innerHTML="Error! Server response: "+xhr.status;
+			err=1;
 		    }
 		    else {
 			var resp = JSON.parse(xhr.responseText);
 			progress.innerHTML=resp['msg'];
 			console.log("Server response for "+filename+": "+resp['msg']);
 			progress.className = (resp['errorcode'] == "0" ? "success" : "failure");
+			err = (resp['errorcode'] == "0" ? 0 : 1);
+		    }
+		    if (err) {
+			Recorder.setupDownload(file, filename);
 		    }
 		}
 	    };

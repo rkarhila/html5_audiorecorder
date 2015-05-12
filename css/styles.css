@@ -265,3 +265,12 @@ pre
 #fontslide,#rowslide {
     width:100px;
 }
+
+
+#savelink {
+    float: left;
+    border: 1px solid;
+    background-color: blanchedalmond;
+    padding: 4px;
+    font-size: 12px;
+}

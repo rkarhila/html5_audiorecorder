@@ -130,7 +130,11 @@
 
     Recorder.setupDownload = function(blob, filename){
 	var url = (window.URL || window.webkitURL).createObjectURL(blob);
-	var link = document.getElementById("save");
+	var o = $id("progress");
+	var link = o.insertBefore(document.createElement("a"), o.firstChild);
+	link.id="savelink";
+	link.innerHTML="Tallenna<br>levylle";
+	//var link = document.getElementById("save");
 	link.href = url;
 	link.download = filename || 'output.wav';
     }
