@@ -11,25 +11,22 @@
   <?php if ($feedbackform): ?>
     <form name="feedback" action="logout.php" method="post">
       <h1>Jätä palautetta äänityssysteemistä! </h1>
-      <p>
-        Palaute käsitellään erillään datasta ja anonyymisti, 
-        jos et erikseen jätä yhteystietojasi, mikä lienee tarpeen
-        vain jos kysyt jotain ja haluat saada vastauksen.
-      </p>
       <p>Miten meni? Sana on vapaa, alla muutama johdantokysymys:</p>
       <ul>
         <li>
           Oliko järjestelmä helppokäyttöinen? Miten sitä voisi parantaa?
         </li>
         <li>
-          Tuntuiko ruudulta lukeminen luontevalta? Artikuloitko eri tavalla kuin toiselle ihmiselle puhuessasi?
+          Tuntuiko ruudulta lukeminen luontevalta? Artikuloitko ensimmäisessä lukutehtävässä eri tavalla kuin toiselle ihmiselle puhuessasi?
           Jos, niin miten, ja voisiko tätä ilmiötä jotenkin välttää?
         </li>
         <li>
-          Tuntuivatko tehtävät järkeviltä? Olivatko luetut kappaleet ja dialogit luontevia?
+          Tuntuivatko tehtävät järkeviltä? Miltä tällaiset tehtävät tuntuisivat koetilanteessa? Mikä olisi parempi tehtävä?
         </li>
       </ul>
+      <p>Palaute käsitellään erillään datasta ja anonyymisti.</p>
       <textarea name="feedback" cols="80" rows="20"></textarea>
+      <h2>Ilmoittaudu samalla vaivalla vapaaehtoiseksi tuleviin kuuntelukokeisiin!</h2>
       <p>
         Aalto-yliopiston sähkötekniikan korkeakoulun signaalinkäsittelyn ja
         akustiikan laitoksen puheentunnistusryhmä (joka on tämänkin projektin tekniikasta
