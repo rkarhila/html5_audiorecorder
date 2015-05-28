@@ -49,25 +49,27 @@ html(lang="en-us")
             td.readerstd
               =$student['realname']
 
+    - $n = 0 
     h2 Kaikki tämänhetkiset puhujasi:
     =$eval_update_url
     table#readerstable
-      th Lisäysaika
-      th Vuosi-
-        br
-        | kurssi
-      th A/B-
-        br
-        | ruotsi
-      th Tunnus
-      th Salasana
-      th Kuuntele
-      th Sujuvuus
-        =$fluency_evaluation_tip
-      th Äänteet
-        =$phone_evaluation_tip
-
       - foreach ($students as $student)
+        -if ($n++ % 10 == 0)
+
+          th Lisäysaika
+          th Vuosi-
+            br
+            | kurssi
+          th A/B-
+            br
+            | ruotsi
+          th Tunnus
+          th Salasana
+          th Kuuntele
+          th Sujuvuus
+            =$fluency_evaluation_tip
+          th Äänteet
+            =$phone_evaluation_tip
         tr 
           td.readerstd
             =$student['timestamp']

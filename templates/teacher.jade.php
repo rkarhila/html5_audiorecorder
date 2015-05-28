@@ -50,32 +50,35 @@
         <?php } ?>
       </table>
     <?php } ?>
+    <?php $n = 0  ?>
     <h2>Kaikki tämänhetkiset puhujasi:</h2>
     <?php echo $eval_update_url ?>
     <table id="readerstable">
-      <th>Lisäysaika</th>
-      <th>
-        Vuosi-
-        <br />
-        kurssi
-      </th>
-      <th>
-        A/B-
-        <br />
-        ruotsi
-      </th>
-      <th>Tunnus</th>
-      <th>Salasana</th>
-      <th>Kuuntele</th>
-      <th>
-        Sujuvuus
-        <?php echo $fluency_evaluation_tip ?>
-      </th>
-      <th>
-        Äänteet
-        <?php echo $phone_evaluation_tip ?>
-      </th>
       <?php foreach ($students as $student) { ?>
+        <?php if ($n++ % 10 == 0) { ?>
+          <th>Lisäysaika</th>
+          <th>
+            Vuosi-
+            <br />
+            kurssi
+          </th>
+          <th>
+            A/B-
+            <br />
+            ruotsi
+          </th>
+          <th>Tunnus</th>
+          <th>Salasana</th>
+          <th>Kuuntele</th>
+          <th>
+            Sujuvuus
+            <?php echo $fluency_evaluation_tip ?>
+          </th>
+          <th>
+            Äänteet
+            <?php echo $phone_evaluation_tip ?>
+          </th>
+        <?php } ?>
         <tr>
           <td class="readerstd">
             <?php echo $student['timestamp'] ?>
