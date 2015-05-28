@@ -274,3 +274,37 @@ pre
     padding: 4px;
     font-size: 12px;
 }
+
+
+/* Tool tips for evauation page */
+div#tips a  {
+	text-decoration:none;
+	border-bottom:2px solid green;
+	color: #FF0000;
+}
+
+div#tips a:hover {
+	color: #666666;
+	background: #FFFFCC;
+	text-decoration: none;
+}
+div#tips a span {display: none;}
+div#tips a:hover span {
+	display: block;
+	position: absolute;
+	/*left: 10%;*/
+	width: 400px;
+	padding: 5px;
+	margin: 10px;
+	margin-left: -350px;
+	z-index: 100;
+	color: #0000CC;
+	background: #FFFFCC;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	text-align: left;
+	border: 1px solid #666666;
+	text-decoration: none;
+}
+div#tips li {
+    padding-bottom: 5px;
+}

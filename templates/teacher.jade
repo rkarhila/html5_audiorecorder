@@ -53,12 +53,19 @@ html(lang="en-us")
     =$eval_update_url
     table#readerstable
       th Lisäysaika
-      th Vuosikurssi
-      th A/B-ruotsi
+      th Vuosi-
+        br
+        | kurssi
+      th A/B-
+        br
+        | ruotsi
       th Tunnus
       th Salasana
       th Kuuntele
-      th Arvioi
+      th Sujuvuus
+        =$fluency_evaluation_tip
+      th Äänteet
+        =$phone_evaluation_tip
 
       - foreach ($students as $student)
         tr 
@@ -78,7 +85,9 @@ html(lang="en-us")
               =$audio['name']
               br
           td.readerstd
-            =$student['evaluationform']
+            =$student['fluency_evaluationform']
+          td.readerstd
+            =$student['phones_evaluationform']
 
 
 

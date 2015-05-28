@@ -133,7 +133,7 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
     
     $audiofiles=[];
 
-    foreach (glob("$targetdir/*.wav") as $audiofile) {
+    foreach (glob("$targetdir/*.mp3") as $audiofile) {
       $audioname=str_replace("$targetdir/$speaker-","", $audiofile);
       $audiolength=getDuration($audiofile);
 
@@ -144,31 +144,64 @@ if (isset($name) && $_SESSION['userclass'] == 'admin') {
 
 
 
-    $evaluationform="<select name='evaluation' id='eval_$speaker' onChange='updateEval(\"$speaker\");'>".PHP_EOL;
+
+    /* Fluency evaluation */
+
+
+    $fluency_evaluationform="<select name='fluency_evaluation' id='fluency_eval_$speaker' onChange='updateFluencyEval(\"$speaker\");'>".PHP_EOL;
     
-
-
-    if ($arr['evaluation'])
+    if ($arr['fluency_evaluation'])
       $default="";
     else
       $default="selected";
 
-    $evaluationform.="<option $default>Valitse</option>".PHP_EOL;
+    $fluency_evaluationform.="<option $default>Valitse</option>".PHP_EOL;
 
-    foreach([4,5,6,7,8,9,10] as $grade) {
-      if ($arr['evaluation'] == $grade) {
+    foreach($conf['grading'] as $grade) {
+      if ($arr['fluency_evaluation'] == $grade) {
 	$default="selected";
       }
       else $default="";
       
-      $evaluationform.="<option $default>$grade</option>".PHP_EOL;
+      $fluency_evaluationform.="<option $default>$grade</option>".PHP_EOL;
     }
-    $evaluationform.='</select>';
+    $fluency_evaluationform.='</select>';
 
-    $arr['evaluationform']=$evaluationform;
+    $arr['fluency_evaluationform']=$fluency_evaluationform;
+
+
+
+
+
+    /* Phonemes evaluation */
+
+
+    $phones_evaluationform="<select name='phones_evaluation' id='phones_eval_$speaker' onChange='updatePhonesEval(\"$speaker\");'>".PHP_EOL;
+    
+    if ($arr['phones_evaluation'])
+      $default="";
+    else
+      $default="selected";
+
+    $phones_evaluationform.="<option $default>Valitse</option>".PHP_EOL;
+
+    foreach($conf['grading'] as $grade) {
+      if ($arr['phones_evaluation'] == $grade) {
+	$default="selected";
+      }
+      else $default="";
+      
+      $phones_evaluationform.="<option $default>$grade</option>".PHP_EOL;
+    }
+    $phones_evaluationform.='</select>';
+
+    $arr['phones_evaluationform']=$phones_evaluationform;
+
     array_push($students, $arr);
 
   }
+
+
 
 }
 else {
@@ -182,7 +215,9 @@ else {
 //require('php/footer.php');
 
 
+$phone_evaluation_tip='<div id="tips"> <a href="#"> <strong>?</strong><span> '.$conf['phones_help'].' </span></a> </div>';
 
+$fluency_evaluation_tip='<div id="tips"> <a href="#"> <strong>?</strong><span>'.$conf['fluency_help'].'</span></a> </div>';
 
 
 

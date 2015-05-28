@@ -54,12 +54,27 @@
     <?php echo $eval_update_url ?>
     <table id="readerstable">
       <th>Lisäysaika</th>
-      <th>Vuosikurssi</th>
-      <th>A/B-ruotsi</th>
+      <th>
+        Vuosi-
+        <br />
+        kurssi
+      </th>
+      <th>
+        A/B-
+        <br />
+        ruotsi
+      </th>
       <th>Tunnus</th>
       <th>Salasana</th>
       <th>Kuuntele</th>
-      <th>Arvioi</th>
+      <th>
+        Sujuvuus
+        <?php echo $fluency_evaluation_tip ?>
+      </th>
+      <th>
+        Äänteet
+        <?php echo $phone_evaluation_tip ?>
+      </th>
       <?php foreach ($students as $student) { ?>
         <tr>
           <td class="readerstd">
@@ -85,7 +100,10 @@
             <?php } ?>
           </td>
           <td class="readerstd">
-            <?php echo $student['evaluationform'] ?>
+            <?php echo $student['fluency_evaluationform'] ?>
+          </td>
+          <td class="readerstd">
+            <?php echo $student['phones_evaluationform'] ?>
           </td>
         </tr>
       <?php } ?>
